@@ -5,18 +5,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import java.time.ZonedDateTime;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
-class ExampleServiceTest {
+@ActiveProfiles("integration-test")
+class ExampleServiceIntegrationTest {
 
     @Autowired
     private ExampleService exampleService;
