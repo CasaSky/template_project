@@ -3,10 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.casasky</groupId>
-    <artifactId>template_ws</artifactId>
+    <artifactId>template_project</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
-    <name>template_ws</name>
+
+    <name>template_project</name>
     <description>Template project for a webservice based on Spring Boot framework</description>
+
+    <modules>
+        <module>earth_ws</module>
+        <module>mars_ws</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
