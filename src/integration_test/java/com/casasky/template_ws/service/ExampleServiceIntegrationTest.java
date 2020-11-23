@@ -1,41 +1,22 @@
 package com.casasky.template_ws.service;
 
-import com.casasky.template_ws.entity.Example;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-
-import javax.persistence.EntityManagerFactory;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@SpringBootTest
-@ActiveProfiles("integration-test")
-class ExampleServiceIntegrationTest {
+import com.casasky.template_ws.entity.Example;
+
+
+
+class ExampleServiceIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private ExampleService exampleService;
 
-    @Autowired
-    private EntityManagerFactory emf;
-
-
-    @BeforeEach
-    public void truncate() {
-
-        var em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.createNativeQuery("truncate table example").executeUpdate();
-        em.getTransaction().commit();
-
-    }
-
     @Test
-    public void persist() {
+    void testPersist() {
 
         var example = new Example("test");
         exampleService.persist(example);
