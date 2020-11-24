@@ -36,7 +36,7 @@ public class EarthlingController {
     @GetMapping
     public ResponseEntity<List<Earthling>> earthlings() {
 
-        return ResponseEntity.ok(earthlingService.findAll());
+        return ResponseEntity.ok(earthlingService.findAll(Earthling.class));
 
     }
 

@@ -13,5 +13,20 @@
 
     <artifactId>mars_ws</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.casasky</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.casasky</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

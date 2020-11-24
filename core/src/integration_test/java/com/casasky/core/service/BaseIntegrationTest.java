@@ -1,4 +1,4 @@
-package com.casasky.earth_ws.service;
+package com.casasky.core.service;
 
 
 import javax.persistence.EntityManager;
@@ -29,13 +29,13 @@ public class BaseIntegrationTest {
         em.getTransaction().begin();
         // todo way to scan all tables
         em.createNativeQuery("truncate table earthling").executeUpdate();
+        em.createNativeQuery("truncate table marsianer").executeUpdate();
         em.getTransaction().commit();
 
     }
 
 
     public <T> void persist(T entity) {
-
         em.persist(entity);
     }
 

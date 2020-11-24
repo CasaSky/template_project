@@ -1,4 +1,4 @@
-package com.casasky.earth_ws.service;
+package com.casasky.mars_ws.service;
 
 
 import javax.persistence.EntityManager;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class EarthlingService extends TemplateBaseService {
+public class MarsianerService extends TemplateBaseService {
 
-    public EarthlingService(EntityManager em) {
+    public MarsianerService(EntityManager em) {
         super(em);
     }
 

@@ -13,6 +13,7 @@
     <modules>
         <module>earth_ws</module>
         <module>mars_ws</module>
+        <module>core</module>
     </modules>
 
     <properties>
@@ -30,6 +31,7 @@
         <plugins.maven-dependency.version>3.1.2</plugins.maven-dependency.version>
         <plugins.maven-surfire.version>2.22.2</plugins.maven-surfire.version>
         <plugins.maven-helper.version>3.0.0</plugins.maven-helper.version>
+        <plugins.maven-jar.version>3.1.2</plugins.maven-jar.version>
     </properties>
 
     <dependencies>
@@ -161,6 +163,13 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>${plugins.maven-helper.version}</version>
+                </plugin>
+
+                <!-- building jars for example for test classes -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${plugins.maven-jar.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

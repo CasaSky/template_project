@@ -4,10 +4,20 @@ create database template_db owner template_user;
 
 set role template_user;
 
-create table example
+
+create table earthling
 (
-    id            bigserial,
-    name          text collate "C" not null,
-    creation_time timestamptz      not null,
+    id        bigserial,
+    name      text collate "C" not null,
+    born_time timestamptz      not null,
+    primary key (id)
+);
+
+
+create table marsianer
+(
+    id        bigserial,
+    name      text collate "C" not null,
+    born_time timestamptz      not null,
     primary key (id)
 );
