@@ -25,6 +25,7 @@
         <!-- dependencies -->
         <dependency.spring-boot.version>2.4.0</dependency.spring-boot.version>
         <dependency.postgresql.version>42.2.18</dependency.postgresql.version>
+        <dependency.sentry.version>3.2.0</dependency.sentry.version>
 
         <!-- maven plugin -->
         <plugins.maven-compiler.version>3.8.1</plugins.maven-compiler.version>
@@ -64,6 +65,11 @@
         </dependency>
 
         <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -91,6 +97,12 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${dependency.postgresql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.sentry</groupId>
+                <artifactId>sentry</artifactId>
+                <version>${dependency.sentry.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

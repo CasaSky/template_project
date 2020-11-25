@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.casasky.mars_ws.entity.Marsianer;
 import com.casasky.mars_ws.service.MarsianerService;
+import io.sentry.Sentry;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,22 @@ public class MarsianerController {
     public ResponseEntity<List<Marsianer>> marsianers() {
 
         return ResponseEntity.ok(marsianerService.findAll(Marsianer.class));
+
+    }
+
+
+    @GetMapping("sentry")
+    public ResponseEntity<?> sentry() {
+
+        try {
+            throw new Exception("Sentry event simulation");
+        }
+        catch (Exception e) {
+            //todo figure out how to avoid this call!!
+            Sentry.captureException(e);
+        }
+
+        return ResponseEntity.noContent().build();
 
     }
 
