@@ -13,14 +13,27 @@ class SentryInitializer {
 
     private static final Logger LOG = LogManager.getLogger();
 
+    private final String activeProfile;
+
+    public SentryInitializer(String activeProfile) {
+        this.activeProfile = activeProfile;
+    }
+
+
     @PostConstruct
     private void init() {
+
 
         String dsn = System.getenv("log.sentry.dsn");
 
         if (Strings.isNotBlank(dsn)) {
 
             Sentry.init(options -> options.setDsn(dsn));
+
+            Sentry.configureScope(scope -> {
+                scope.setTag("version", "1.0");
+                scope.setTag("webservice", "to be defined");
+            });
 
             LOG.info("sentry initialized");
 
