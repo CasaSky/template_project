@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="WARN" packages="org.apache.logging.log4j.core,io.sentry.log4j2">
     <Appenders>
         <Console name="consoleAppender" target="SYSTEM_OUT">
 
@@ -14,6 +14,9 @@
             <PatternLayout
                     pattern="%d|%highlight{%p}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green}|%t|%c{1}|%msg%n%throwable"/>
         </Console>
+
+        <Sentry name="Sentry" />
+
     </Appenders>
     <Loggers>
 
@@ -25,6 +28,8 @@
 
         <!-- for everything else output from the info level logs -->
         <Root level="info">
+            <AppenderRef ref="Sentry"/>
+
             <AppenderRef ref="consoleAppender"/>
         </Root>
     </Loggers>
