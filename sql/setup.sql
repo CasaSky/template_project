@@ -1,6 +1,6 @@
-create role template_user with login password 'G1E:bVwy|x12Z-=o';
+create role template_user with login password 'ENCRYPTED!';
 
-create user template_user with password 'G1E:bVwy|x12Z-=o' role postgres;
+create user template_user with password 'ENCRYPTED!' role postgres;
 
 create database template_db owner template_user;
 
