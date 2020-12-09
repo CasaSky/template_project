@@ -245,6 +245,7 @@
             </plugins>
         </pluginManagement>
 
+        <!-- helps with including variables in project resources such as application.properties (for reuse) -->
         <resources>
             <resource>
                 <filtering>true</filtering>
