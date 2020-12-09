@@ -31,6 +31,7 @@
         <dependency.sentry.version>3.2.0</dependency.sentry.version>
 
         <!-- maven plugin -->
+        <plugins.commit-id.version>2.2.2</plugins.commit-id.version>
         <plugins.maven-compiler.version>3.8.1</plugins.maven-compiler.version>
         <plugins.maven-dependency.version>3.1.2</plugins.maven-dependency.version>
         <plugins.maven-surfire.version>2.22.2</plugins.maven-surfire.version>
@@ -130,6 +131,21 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -187,6 +203,12 @@
 
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>${plugins.commit-id.version}</version>
+                </plugin>
+
                 <!-- java sources compilation -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

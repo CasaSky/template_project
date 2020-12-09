@@ -30,11 +30,12 @@ public class SentryInitializer {
             Sentry.init(options -> {
                 options.setDsn(dsn);
                 options.setEnableExternalConfiguration(true);
+                options.setRelease(sentryData.release);
             });
 
             Sentry.configureScope(scope -> {
-                scope.setTag("version", "1.0");
                 scope.setTag("webservice", sentryData.webservice);
+                scope.setTag("branch", sentryData.branch);
             });
 
             LOG.info("sentry initialized");

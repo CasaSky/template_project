@@ -1,17 +1,24 @@
 package com.casasky.core.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 
 
 @Configuration
-public class SentryConfig {
+class SentryConfig {
+
+    @Value("${git.commit.id.abbrev}")
+    private String commitId;
+
+
+    @Value("${git.branch}")
+    private String branch;
 
     @Bean
-    public SentryInitializer sentryInitializer(WebserviceProperties webserviceProperties) {
+    SentryInitializer sentryInitializer(WebserviceProperties webserviceProperties) {
 
-         return new SentryInitializer(new SentryData(webserviceProperties.getName()));
+         return new SentryInitializer(new SentryData(webserviceProperties.getName(), commitId , branch));
 
     }
 
