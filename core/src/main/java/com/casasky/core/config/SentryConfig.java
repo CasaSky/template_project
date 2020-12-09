@@ -1,6 +1,5 @@
 package com.casasky.core.config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -10,10 +9,9 @@ import org.springframework.core.env.Environment;
 public class SentryConfig {
 
     @Bean
-    public SentryInitializer sentryInitializer(Environment environment) {
+    public SentryInitializer sentryInitializer(WebserviceProperties webserviceProperties) {
 
-        var activeProfiles = environment.getActiveProfiles();
-        return new SentryInitializer(activeProfiles.length < 1 ? "default" : activeProfiles[0]);
+         return new SentryInitializer(new SentryData(webserviceProperties.getName()));
 
     }
 

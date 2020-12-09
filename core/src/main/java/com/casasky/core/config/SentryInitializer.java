@@ -9,30 +9,32 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 
 
-class SentryInitializer {
+public class SentryInitializer {
 
     private static final Logger LOG = LogManager.getLogger();
 
-    private final String activeProfile;
+    private final SentryData sentryData;
 
-    public SentryInitializer(String activeProfile) {
-        this.activeProfile = activeProfile;
+    public SentryInitializer(SentryData sentryData) {
+        this.sentryData = sentryData;
     }
 
 
     @PostConstruct
     private void init() {
 
-
         String dsn = System.getenv("log.sentry.dsn");
 
         if (Strings.isNotBlank(dsn)) {
 
-            Sentry.init(options -> options.setDsn(dsn));
+            Sentry.init(options -> {
+                options.setDsn(dsn);
+                options.setEnableExternalConfiguration(true);
+            });
 
             Sentry.configureScope(scope -> {
                 scope.setTag("version", "1.0");
-                scope.setTag("webservice", "to be defined");
+                scope.setTag("webservice", sentryData.webservice);
             });
 
             LOG.info("sentry initialized");

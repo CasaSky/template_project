@@ -11,14 +11,17 @@
     <description>Template project for a webservice based on Spring Boot framework</description>
 
     <modules>
-        <module>earth_ws</module>
-        <module>mars_ws</module>
+        <module>${earth_ws.name}</module>
+        <module>${mars_ws.name}</module>
         <module>core</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <earth_ws.name>earth_ws</earth_ws.name>
+        <mars_ws.name>mars_ws</mars_ws.name>
 
         <jdk.version>15</jdk.version>
 
@@ -66,6 +69,17 @@
 
         <dependency>
             <groupId>io.sentry</groupId>
+            <artifactId>sentry-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.sentry</groupId>
+                    <artifactId>sentry</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.sentry</groupId>
             <artifactId>sentry-log4j2</artifactId>
         </dependency>
 
@@ -97,6 +111,12 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${dependency.postgresql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.sentry</groupId>
+                <artifactId>sentry-spring-boot-starter</artifactId>
+                <version>${dependency.sentry.version}</version>
             </dependency>
 
             <dependency>
@@ -202,6 +222,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
     <!-- we can override some plugin configurations for certain profiles here -->
